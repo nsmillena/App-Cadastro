@@ -46,6 +46,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.example.appcadastro.ui.theme.Darkblue
 import com.example.appcadastro.ui.theme.Lightblue
@@ -97,17 +98,65 @@ fun ProdutoItem() {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .offset(y = 70.dp)
+                    .size(150.dp)
+                    .clip(shape = CircleShape)
+                    .align(Alignment.Center)
             )
-        }
-    }
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    AppCadastroTheme {
-        Greeting("Android")
     }
-}
+Spacer(Modifier.height(55.dp))
+Column(
+    Modifier.padding(16.dp)
+) {
+    Text(
+        text = "Cadastre-se",
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight(500),
+        fontSize = 35.sp,
+    )
+Spacer(Modifier.height(25.dp))
+    Text(
+        text = "Nome: ",
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight(250),
+        fontSize = 25.sp,
+    )
+    Spacer(Modifier.height(15.dp))
+    TextField(
+        value = nome,
+        onValueChange = { nome = it },
+        label = { Text("Digite seu nome completo") },
+        maxLines = 2
+    )
+    Spacer(Modifier.height(20.dp))
+    Text(
+        text = "Telefone: ",
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight(250),
+        fontSize = 25.sp,
+    )
+    Spacer(Modifier.height(15.dp))
+    TextField(
+        value = telefone,
+        onValueChange = { telefone = it },
+        label = { Text("Digite o telefone...") },
+        keyboardOptions = (KeyboardOptions = KeyboardType.Number)
+    )
+    Spacer(Modifier.height(20.dp))
+    Text(
+        text = "Curso: ",
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight(250),
+        fontSize = 25.sp,
+    )
+    Spacer(Modifier.height(15.dp))
+    TextField(
+        value = curso,
+        onValueChange = { curso = it },
+        label = { Text("Digite o nome do curso") },
+        maxLines = 2
+    )
+
+
 
 
