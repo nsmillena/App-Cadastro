@@ -140,7 +140,7 @@ fun ProdutoItem() {
                 value = telefone,
                 onValueChange = { telefone = it },
                 label = { Text("Digite o telefone...") },
-                keyboardOptions = (KeyboardOptions = KeyboardType.Number)
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             Spacer(Modifier.height(20.dp))
             Text(
