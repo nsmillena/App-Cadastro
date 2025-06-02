@@ -42,14 +42,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.appcadastro.ui.theme.Darkblue
 import com.example.appcadastro.ui.theme.Lightblue
-import com.example.appcadastro.ui.theme.Pink40
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
+
 
 
 class MainActivity : ComponentActivity() {
@@ -72,12 +71,15 @@ fun ProdutoItem() {
     var telefone by remember { mutableStateOf("") }
     var curso by remember { mutableStateOf("") }
     var serie by remember { mutableStateOf("") }
+    val context = LocalContext.current
+
     Column(
-        Modifier
+        modifier = Modifier
             .verticalScroll(rememberScrollState())
-            .height(250.dp)
-            .width(200.dp)
-    ) {
+            .fillMaxSize()
+            .padding(16.dp)
+    )
+    {
         Box(
             modifier = Modifier
                 .height(180.dp)
@@ -172,17 +174,26 @@ fun ProdutoItem() {
                 maxLines = 2
             )
         }
-        Column(
-            Modifier.padding(16.dp)
-        ) {
-            Button(
-                onClick = { /* TODO */ }
-            ) {
-                Text(text = "Cadastrar")
+        Button(
+            onClick = {
+                Toast.makeText(
+                    context,
+                    "Nome: $nome\nTelefone: $telefone\nCurso: $curso\nSérie: $serie",
+                    Toast.LENGTH_LONG
+                ).show()
+
+                nome = ""
+                telefone = ""
+                curso = ""
+                serie = ""
             }
+        ) {
+            Text(text = "Cadastrar")
         }
+
     }
-}
+    }
+
 
 
 @Preview
