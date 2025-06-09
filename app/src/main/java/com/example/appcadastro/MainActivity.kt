@@ -71,6 +71,7 @@ fun ProdutoItem() {
     var telefone by remember { mutableStateOf("") }
     var curso by remember { mutableStateOf("") }
     var serie by remember { mutableStateOf("") }
+    var observacoes by remember { mutableStateOf("") }
     val context = LocalContext.current
 
     Column(
@@ -173,12 +174,27 @@ fun ProdutoItem() {
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 maxLines = 2
             )
+            Spacer(Modifier.height(20.dp))
+            Text(
+                text = "Observações: ",
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight(250),
+                fontSize = 25.sp,
+            )
+            Spacer(Modifier.height(15.dp))
+            TextField(
+                value = observacoes,
+                onValueChange = { serie = it },
+                label = { Text("Digite as suas observações") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                maxLines = 2
+            )
         }
         Button(
             onClick = {
                 Toast.makeText(
                     context,
-                    "Nome: $nome\nTelefone: $telefone\nCurso: $curso\nSérie: $serie",
+                    "Nome: $nome\nTelefone: $telefone\nCurso: $curso\nSérie: $serie\nObservações: $observacoes",
                     Toast.LENGTH_LONG
                 ).show()
 
@@ -186,6 +202,7 @@ fun ProdutoItem() {
                 telefone = ""
                 curso = ""
                 serie = ""
+                observacoes = ""
             }
         ) {
             Text(text = "Cadastrar")
